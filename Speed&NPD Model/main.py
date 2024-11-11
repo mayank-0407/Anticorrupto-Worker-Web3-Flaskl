@@ -19,7 +19,7 @@ coco_model = YOLO('yolov8n.pt')
 license_plate_detector = YOLO('license_plate_detector.pt')
 
 # Load video
-cap = cv2.VideoCapture('sample.mp4')
+cap = cv2.VideoCapture(0)
 fps = cap.get(cv2.CAP_PROP_FPS)  # Frames per second of the video
 
 vehicles = [2, 3, 5, 7]
@@ -109,9 +109,7 @@ while ret:
         # Display the current frame with annotations
         cv2.imshow('Camera View', frame)
 
-        # Break the loop on 'q' key press
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+        
 
 # Write results to CSV using pandas
 df = pd.DataFrame(results)
